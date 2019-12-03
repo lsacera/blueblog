@@ -16,7 +16,7 @@ pipeline {
                         usernameVariable: 'USERNAME')]) {
                          //def returnCode = sh script:"${AGENT_HOME}/bin/agent.sh -s \"${WORKSPACE}\" -n \"Blueblog\" -c -l ${BUILD_NUMBER} --user \"$USERNAME\" --pass \"$PASSWORD\"", returnStatus:true
                          //echo returnCode
-                         sh label: 'returnCode', returnStatus: true, script: 'wget http://google.com -O /dev/null'
+                         def returnCode = sh(returnStatus: true, script: 'wget http://google.com -O /dev/null')
                          echo returnCode
                          switch(returnCode){
                                 case 0:
