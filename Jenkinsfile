@@ -14,7 +14,7 @@ pipeline {
               withCredentials([usernamePassword(credentialsId: 'luis_kiuwan',
                         passwordVariable: 'PASSWORD',
                         usernameVariable: 'USERNAME')]) {
-                            def returnCode = bat(script: "${AGENT_HOME}/bin/agent.cmd -s \"${WORKSPACE}\" -n \"appPipeline\" -cr \"CR001\" -l ${BUILD_NUMBER} -wr --user \"$USERNAME\" --pass \"$PASSWORD\"",
+                            def returnCode = bat(script: "${AGENT_HOME}/bin/agent.sh -s \"${WORKSPACE}\" -n \"appPipeline\" -cr \"CR001\" -l ${BUILD_NUMBER} -wr --user \"$USERNAME\" --pass \"$PASSWORD\"",
                             returnStatus: true)
                              
                          switch(returnCode){
