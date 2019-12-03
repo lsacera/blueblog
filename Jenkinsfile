@@ -14,8 +14,10 @@ pipeline {
               withCredentials([usernamePassword(credentialsId: 'luis_kiuwan',
                         passwordVariable: 'PASSWORD',
                         usernameVariable: 'USERNAME')]) {
-                         def returnCode = sh(returnStatus: true, script:'${AGENT_HOME}/bin/agent.sh -s \"${WORKSPACE}\" -n \"Blueblog\" -cr \"${CHANGE_ID}\" -l \"${BUILD_TAG}\" -bn \"${BRANCH_NAME}\" -wr --user \"$USERNAME\" --pass \"$PASSWORD\"')
+                         //def returnCode = sh(returnStatus: true, script:'${AGENT_HOME}/bin/agent.sh -s \"${WORKSPACE}\" -n \"Blueblog\" -cr \"${CHANGE_ID}\" -l \"${BUILD_TAG}\" -bn \"${BRANCH_NAME}\" -wr --user \"$USERNAME\" --pass \"$PASSWORD\"')
                          //def returnCode = sh(returnStatus: true, script: 'wget http://google.com -O /dev/null')
+                         def returnCode = 0
+                         echo $CHANGE_ID
                          echo returnCode.toString()
                          switch(returnCode){
                                 case 0:  
