@@ -14,7 +14,7 @@ pipeline {
               withCredentials([usernamePassword(credentialsId: 'luis_kiuwan',
                         passwordVariable: 'PASSWORD',
                         usernameVariable: 'USERNAME')]) {
-                            returnCode=sh '${AGENT_HOME}/bin/agent.sh -s \"${WORKSPACE}\" -n \"Blueblog\" -c -l ${BUILD_NUMBER} --user \"$USERNAME\" --pass \"$PASSWORD\"'
+                         def returnCode = sh script:"${AGENT_HOME}/bin/agent.sh -s \"${WORKSPACE}\" -n \"Blueblog\" -c -l ${BUILD_NUMBER} --user \"$USERNAME\" --pass \"$PASSWORD\"", returnStatus:true
                          echo $returnCode
                          switch(returnCode){
                                 case 0:
