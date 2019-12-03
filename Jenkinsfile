@@ -16,9 +16,10 @@ pipeline {
                         usernameVariable: 'USERNAME')]) {
                          def returnCode = sh(returnStatus: true, script:'${AGENT_HOME}/bin/agent.sh -s \"${WORKSPACE}\" -n \"Blueblog\" -c -l ${BUILD_NUMBER} --user \"$USERNAME\" --pass \"$PASSWORD\"')
                          //def returnCode = sh(returnStatus: true, script: 'wget http://google.com -O /dev/null')
-                         echo returnCode
+                         echo returnCode.toString()
                          switch(returnCode){
-                                case 0:
+                                case 0:  
+                                    currentBuild.result = 'SUCCESS'
                                     break
                                 case 14:
                                     currentBuild.result = 'UNSTABLE'
@@ -36,8 +37,9 @@ pipeline {
                                     break
                                 default:
                                     currentBuild.result = 'NOT_BUILT'
-                                }
-                        }
+                                }//end switch
+                           echo currentBuild.result
+                        }//end withCredentials
                   }
              }
     }
