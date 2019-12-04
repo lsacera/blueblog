@@ -14,11 +14,9 @@ pipeline {
               withCredentials([usernamePassword(credentialsId: 'luis_kiuwan',
                         passwordVariable: 'PASSWORD',
                         usernameVariable: 'USERNAME')]) {
-                         //def returnCode = sh(returnStatus: true, script:'${AGENT_HOME}/bin/agent.sh -s \"${WORKSPACE}\" -n \"Blueblog\" -cr \"${CHANGE_ID}\" -l \"${BUILD_TAG}\" -bn \"${BRANCH_NAME}\" -wr --user \"$USERNAME\" --pass \"$PASSWORD\"')
-                         //def returnCode = sh(returnStatus: true, script: 'wget http://google.com -O /dev/null')
-                         def returnCode = 0
-                         echo "Building PR #${env.getEnvironment()}"
-                         echo returnCode.toString()
+                         def returnCode = sh(returnStatus: true, script:'${AGENT_HOME}/bin/agent.sh -s \"${WORKSPACE}\" -n \"${JOB_NAME}\" -cr \"${BUILD_NUMBER}\" -l \"${BUILD_TAG}\" -bn master -wr --user \"$USERNAME\" --pass \"$PASSWORD\"')
+                         //echo "Building PR #${env.getEnvironment()}"
+                         
                          switch(returnCode){
                                 case 0:  
                                     currentBuild.result = 'SUCCESS'
