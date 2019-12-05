@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="se/bluefish/blueblog/" kind="src" path="src"/>
+	<classpathentry kind="src" path="src/se/bluefish/blueblog"/>
+	<classpathentry kind="lib" path="tools/servlet.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/commons-lang-1.0.1.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/oscache.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/servlet-2.3.jar"/>
+	<classpathentry kind="lib" path="web/WEB-INF/lib/velocity-dep-1.3.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="output" path="web/WEB-INF/classes"/>
+</classpath>
